@@ -1,0 +1,6 @@
+project: rnshah9/hh-suite
+target: hh-suite
+
+cmds:
+  - cmd: /usr/local/hh-suite/bin/hhmake -i @@ -o out
+    filepath: /test.fa
