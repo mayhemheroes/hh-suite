@@ -1,5 +1,5 @@
 project: rnshah9/hh-suite
-target: hh-suite
+target: hhmake
 
 cmds:
   - cmd: /usr/local/hh-suite/bin/hhmake -i @@ -o out
