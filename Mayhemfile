@@ -1,6 +1,6 @@
-project: rnshah9/hh-suite
+project: hh-suite
 target: hhmake
 
 cmds:
-  - cmd: /usr/local/hh-suite/bin/hhmake -i @@ -o out
+  - cmd: /usr/local/hh-suite/bin/hhmake -i /test.fa -o /dev/null
     filepath: /test.fa
