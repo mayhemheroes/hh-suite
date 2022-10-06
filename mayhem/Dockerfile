@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/hh-suite
-ADD . .
+COPY . .
 
 WORKDIR /opt/hh-suite/build
 RUN cmake -DHAVE_SSE2=1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/hh-suite ..
