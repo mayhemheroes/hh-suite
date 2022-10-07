@@ -1,17 +1,20 @@
-FROM --platform=linux/amd64 ubuntu:22.04 as builder
+FROM --platform=linux/amd64 debian:stable-slim as builder
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y cmake
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake
 
 COPY . /repo
 WORKDIR /repo/build 
-RUN cmake .. -DCMAKE_INSTALL_PREFIX=/install
+RUN cmake .. -DCMAKE_INSTALL_PREFIX=/install -DCMAKE_BUILD_TYPE=Release -DHAVE_SSE2=1
 RUN make -j8
 RUN make install
 
-FROM ubuntu:22.04 as package
+FROM debian:stable-slim as package
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libgomp1
+# RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libgomp1
+RUN apt-get update && apt-get install -y \
+    libstdc++6 libgomp1
 
-COPY --from=builder /install/bin/hhmake /
+COPY --from=builder /install /usr/local/hh-suite
+ENV HHLIB=/usr/local/hh-suite
+ENV PATH="/usr/local/hh-suite/bin:/usr/local/hh-suite/scripts:${PATH}"

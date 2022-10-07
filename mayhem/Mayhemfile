@@ -2,7 +2,7 @@ project: hh-suite
 target: hhmake
 
 cmds:
-  - cmd: /hhmake -i @@ -o /dev/null
+  - cmd: /usr/local/hh-suite/bin/hhmake -i /test.fa -o /dev/null
     filepath: /test.fa
     env:
       DISABLE_SMOKETEST: '1'
