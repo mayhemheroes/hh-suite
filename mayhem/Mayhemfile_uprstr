@@ -1,0 +1,6 @@
+project: hh-suite
+target: uprstr
+
+cmds:
+  - cmd: /fuzz_uprstr
+    libfuzzer: true
