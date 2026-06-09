@@ -1,0 +1,7 @@
+project: hh-suite
+target: hhmake
+cmds:
+  - cmd: /mayhem/build/src/hhmake -i /test.fa -o /dev/null
+    filepath: /test.fa
+    env:
+      DISABLE_SMOKETEST: '1'
